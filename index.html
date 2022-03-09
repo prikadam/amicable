@@ -24,34 +24,32 @@
 		<div id="factors"></div>
 	</form>
 	<script>
-		// add click event listener on submit button
 		const submit = document.getElementById("submit");
-		submit.addEventListener('click', eventHandler);
+		submit.addEventListener('click', amicableChecker);
 
-		function eventHandler() {
+		function amicableChecker() {
 
-			// get the input values
+			
 			var first_num = document.getElementById("num_one").value;
 			var second_num = document.getElementById("num_two").value;
 
-			// get the factors
+			
 			const factor_arr_one = getFactors(first_num);
 			const factor_arr_two = getFactors(second_num);
 
 			let mesg = '';
-			// check if the numbers are amicable or not
+			
 			if ((addFactors(factor_arr_one) == second_num) &&
 			(addFactors(factor_arr_two) == first_num)) {
 				mesg =
-				first_num + " and " + second_num + " are amicable."
+				" The numbers:" + first_num + " and " + second_num + " are amicable."
 			} else {
 				mesg =
-				first_num + " and " + second_num + " are NOT amicable."
+				" The numbers:" + first_num + " and " + second_num + " are NOT amicable."
 			}
-			// write the answer to doc
+			
 			writeToDoc('isAmicable', mesg);
 
-			// write the factors to doc
 			const firstNoFactor = 'Factors of ' + first_num + ' = [' + factor_arr_one.join(', ') + '] <br/>';
 			const secondNoFactor = 'Factors of ' + second_num + ' = [' + factor_arr_two.join(', ') + ']';
 			writeToDoc('factors', firstNoFactor+secondNoFactor);
